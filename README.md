@@ -1,8 +1,8 @@
 # WEB 2 TPE
 Trabajo Practico Especial - WEB 2 - Vinoteca
-Grupo N° 91
-### Integrantes:
-1. Lorea Garrido, Franco - 
+
+### Integrantes Grupo N° 91:
+1. Lorea Garrido, Franco - francogarrido_@hotmail.com
 2. Arispe Perez, Emanuel - ema.arispe@gmail.com
 
 ### Tematica: 
