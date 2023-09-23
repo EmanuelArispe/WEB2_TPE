@@ -12,7 +12,7 @@ Trabajo Practico Especial - WEB 2 - Vinoteca
  El sito trata sobre la venta y recomendacion de vinos para su correcto maridaje. 
 
  ### Diagrama de DER:
-![Aca va el Diagrama de entidad relación](https://github.com/EmanuelArispe/WEB2_TPE/blob/main/Primera%20entrega/DER-VINOTECA.png)
+![Aca va el Diagrama de entidad relación](https://github.com/EmanuelArispe/WEB2_TPE/blob/main/Primera%20entrega/DER-Vinoteca.png)
 
 
 
@@ -20,5 +20,5 @@ Trabajo Practico Especial - WEB 2 - Vinoteca
   - [x] Nombres de los integrantes del grupo (emails)
   - [x] Temática del TPE
   - [x] Breve descripción de la temática
-  - [ ] Diagrama de entidad relación (DER)
-  - [ ] Código SQL generado en la base de datos (phpMyAdmin)
+  - [x] Diagrama de entidad relación (DER)
+  - [x] Código SQL generado en la base de datos (phpMyAdmin)
