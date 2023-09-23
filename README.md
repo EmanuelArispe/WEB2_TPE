@@ -12,7 +12,7 @@ Trabajo Practico Especial - WEB 2 - Vinoteca
  El sito trata sobre la venta y recomendacion de vinos para su correcto maridaje. 
 
  ### Diagrama de DER:
-
+![Aca va el Diagrama de entidad relación](https://github.com/EmanuelArispe/WEB2_TPE/blob/main/Primera%20entrega/DER-VINOTECA.png)
 
 
 
