@@ -8,6 +8,9 @@ class WineStoreModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=vinoteca;charset=utf8', 'root', '');
     }
 
+    public function getDB(){
+        return $this->db;
+    }
 
     public function getWineStore(){
         $query = $this->db->prepare("SELECT * FROM `bodegas`");

@@ -15,6 +15,9 @@
                     <a class="nav-link" aria-current="page" href="bodega">Bodegas</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="search">Busqueda</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="about">About</a>
                 </li>
                 <li class="nav-item">
