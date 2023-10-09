@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-{include file="head.tpl"}
+{include file="./templatesPart/head.tpl"}
 <body>
-{include file="header.tpl"}
-{include file="table.tpl"}
-{include file="footer.tpl"}
+{include file="./templatesPart/header.tpl"}
+{if ($update != null)}
+    {include file="./templatesPart/upDateMensage.tpl"}
+{/if}
+{include file="./templatesPart/tableWine.tpl"}
+{include file= "./templatesPart/buttonAddWine.tpl"}
+{include file="./templatesPart/footer.tpl"}
 </body>
 </html>

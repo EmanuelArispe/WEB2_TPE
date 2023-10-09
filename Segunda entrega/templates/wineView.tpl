@@ -3,6 +3,8 @@
 {include file="./templatesPart/head.tpl"}
 <body>
 {include file="./templatesPart/header.tpl"}
+{include file="./templatesPart/wine.tpl"}
+{include file="./templatesPart/buttonBack.tpl"}
 {include file="./templatesPart/footer.tpl"}
 </body>
 </html>

@@ -1,10 +1,9 @@
 <?php
-require_once "./Controler/wineControler.php";
-require_once "./Controler/aboutControler.php";
-require_once "./Controler/wineStoreControler.php";
-require_once "./Controler/searchControler.php";
+require_once "./app/Controler/wineControler.php";
+require_once "./app/Controler/aboutControler.php";
+require_once "./app/Controler/wineCellarControler.php";
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 // lee la acción
 if (!empty($_GET['action'])) {
@@ -16,12 +15,12 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $action);
 
+
 // inicializo el controlador
 
 $wineControler = new WineControlers();
 $aboutControler = new AboutControler();
-$wineStoreControler = new WineStoreControler();
-$searchControler = new SearchControler();
+$wineCellarControler = new WineCellarControler();
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
@@ -31,17 +30,43 @@ switch ($params[0]) {
     case 'about':
         $aboutControler->showAbout();
         break;
-    case 'bodega':
-        $wineStoreControler->showWineStore();
+    case 'cellar':
+        $wineCellarControler->showWineCellar();
         break;
     case 'search':
-        $searchControler->showSearch();
+        $wineCellarControler->showEspecificCellar($params[1]);
         break;
-    default: 
-        echo('404 Page not found'); 
+    case 'wine':
+        $wineControler->showWine($params[1]);
         break;
-
+    case 'login':
+        break;
+    case 'loguot':
+        break;
+    case 'deleteWine':
+        $wineControler->showDeleteWine($params[1]);
+        break;
+    case 'modifyWine':
+        $wineControler->showModifyWine($params[1]);
+        break;
+    case 'addModify':
+        $wineControler->addModify($params[1]);
+        break;
+    case 'deleteCellar':
+        $wineCellarControler->showDeleteCellar($params[1]);
+        break;
+    case 'modifyCellar':
+        $wineCellarControler->showModifyCellar($params[1]);
+        break;
+    case 'addModifyCellar':
+        $wineCellarControler->addModifyCellar($params[1]);
+        break;
+    case 'addWine':
+        $wineControler->addWine();
+        break;
+    case 'addCellar':
+        break;
+    default:
+        echo ('404 Page not found');
+        break;
 }
-
-
-?>

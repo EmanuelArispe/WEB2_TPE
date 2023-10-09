@@ -1,5 +1,5 @@
 <?php
-require_once "./View/aboutView.php";
+require_once "./app/View/aboutView.php";
 
 class AboutControler {
     private $view;

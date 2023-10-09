@@ -12,16 +12,16 @@
                     <a class="nav-link" aria-current="page" href="home">Vinos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="bodega">Bodegas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="search">Busqueda</a>
+                    <a class="nav-link" aria-current="page" href="cellar">Bodegas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="login">Log-In</a>
+                    <a class="nav-link" aria-current="page" href="login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="logout">Logout</a>
                 </li>
             </ul>
             </div>
