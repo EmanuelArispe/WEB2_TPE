@@ -3,52 +3,80 @@ require_once "./app/Model/wineCellarModel.php";
 require_once "./app/View/wineCellarView.php";
 require_once "./app/helpers/verifyHelpers.php";
 
-class WineCellarControler{
+class WineCellarControler
+{
     private $view;
     private $model;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->view = new WineCellarView();
         $this->model = new WineCellarModel();
     }
 
-    public function showWineCellar(){
-        $this->view->renderWineCellar($this->model->getWineCellar(),"Bodegas de vinos", $button = false);
+    public function showWineCellar()
+    {
+        $this->view->renderWineCellar($this->model->getWineCellar(), "Bodegas de vinos", $button = false);
     }
 
-    public function showEspecificCellar($cellar){
-        $this->view->renderWineCellar($this->model->getEspecificCellar($cellar),"Bodega: ".$cellar, $button =true);
+    public function showEspecificCellar($cellar)
+    {
+        $this->view->renderWineCellar($this->model->getEspecificCellar($cellar), "Bodega: " . $cellar, $button = true);
     }
 
-    public function showModifyCellar($cellar){
-       $this->view->renderModifyCellar($this->model->getCellar($cellar));
+    public function showModifyCellar($cellar)
+    {
+        $this->view->renderModifyCellar($this->model->getCellar($cellar));
     }
 
-    public function listNameCellar(){
+    public function showAddCellar()
+    {
+        $this->view->renderAddWine();
+    }
+
+    public function listNameCellar()
+    {
         return $this->model->getListNameCellar();
     }
 
-    public function addModifyCellar($idCellar){
+    public function addModifyCellar($idCellar)
+    {
         $pais = $_POST['pais'];
         $provincia = $_POST['provincia'];
         $descripcion = $_POST['descripcion'];
-       if(VerifyHelpers::verifyDates($_POST)){
-            $this->model->upDateCellar($pais,$provincia,$descripcion,$idCellar);
+        if (VerifyHelpers::verifyDates($_POST)) {
+            $this->model->upDateCellar($pais, $provincia, $descripcion, $idCellar);
             $this->showWineCellar();
-       }
-       else{
-        $this->showWineCellar();
-       }
-    }
-
-    public function showDeleteCellar($cellar){
-        if(empty($this->model->getEspecificCellar($cellar))){
-            $this->model->deleteCellar($cellar);
-            $this->showWineCellar();
-        }else{
+        } else {
             $this->showWineCellar();
         }
     }
 
+    public function showDeleteCellar($cellar)
+    {
+        if (empty($this->model->getEspecificCellar($cellar))) {
+            $this->model->deleteCellar($cellar);
+            $this->showWineCellar();
+        } else {
+            // Mostrar error de que faltan datos
+            $this->showWineCellar();
+        }
+    }
 
+    public function newAddCellar()
+    {
+
+        $nombre = $_POST['nombre'];
+        $pais = $_POST['pais'];
+        $provincia = $_POST['provincia'];
+        $descripcion = $_POST['descripcion'];
+
+        if (VerifyHelpers::verifyDates($_POST)) {
+            $this->model->addCellar($nombre,$pais,$provincia,$descripcion);
+            $this->showWineCellar();
+        } else {
+            // Mostrar error de que faltan datos
+            $this->showAddCellar();
+        }
+    }
 }

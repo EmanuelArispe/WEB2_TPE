@@ -23,4 +23,9 @@ class WineCellarView{
         $this->smarty->display('wineCellarModify.tpl');
     }
 
+    public function renderAddWine() {
+        $this->smarty->assign('titulo',"Blue label");
+        $this->smarty->assign('tituloLista', 'Agregar nueva Bodega: ');
+        $this->smarty->display('addCellar.tpl');
+    }
 }

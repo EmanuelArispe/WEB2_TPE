@@ -32,7 +32,6 @@ class  WineView{
         $this->smarty->display('templates/wineModify.tpl');
     }
 
-    
     public function renderAddWine($cellarList){
         $this->smarty->assign('titulo',"Blue label");
         $this->smarty->assign('tituloLista','Agregar nuevo vino: ');
@@ -40,6 +39,5 @@ class  WineView{
         $this->smarty->display('addwine.tpl');
     }
 }
-
 
 

@@ -59,9 +59,8 @@ class WineControlers
 
         if(VerifyHelpers::verifyDates($_POST)){
             var_dump($this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado));
-
         }else{
-           
+           // HACER LA VISTA
             }
     }
 
@@ -87,6 +86,7 @@ class WineControlers
             $this->model->upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
             $this->view->renderWineList($this->model->getWineList(),$nombre);
         } else {
+            // HACER LA VISTA
             $this->view->renderModifyWine($this->model->getWine($id), true);
         }
     }

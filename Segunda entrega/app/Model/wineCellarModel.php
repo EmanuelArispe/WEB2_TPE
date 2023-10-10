@@ -49,7 +49,7 @@ class WineCellarModel {
         $query = $this->db->prepare("UPDATE `bodegas` SET pais = ?, provincia = ?, descripcion = ? WHERE nombre = ?");
         $query->execute([$pais,$provincia,$descripcion,$idCellar]);
 
-        return $query;
+        return $this->db->lastInsertId();
     }
 
     public function deleteCellar($cellar){
@@ -66,5 +66,12 @@ class WineCellarModel {
         $wineCellar = $query->fetchAll(PDO::FETCH_OBJ);
 
         Return $wineCellar;
+    }
+
+    public function addCellar($nombre,$pais,$provincia,$descripcion){
+        $query = $this->db->prepare("INSERT INTO `bodegas`(nombre, pais, provincia, descripcion) VALUES (?, ?, ?, ?)");
+        $query->execute([$nombre,$pais,$provincia,$descripcion]);
+
+        return $this->db->lastInsertId();
     }
 }

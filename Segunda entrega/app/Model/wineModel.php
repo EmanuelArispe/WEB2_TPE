@@ -33,7 +33,7 @@ class WineModel{
 
         $query->execute([$nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id]);
         
-        return $query;
+        return $this->db->lastInsertId();
     }
 
     public function deleteWine($id){
@@ -47,6 +47,6 @@ class WineModel{
         $query = $this->db->prepare("INSERT INTO `vinos`(nombre, bodega, anio, maridaje, cepa, stock, precio, caracteristica, recomendado) VALUES (?,?,?,?,?,?,?,?,?)");
         $query->execute([$nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado]);
 
-        return $query;
+        return $this->db->lastInsertId();
     }
 }
