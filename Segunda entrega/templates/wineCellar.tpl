@@ -7,7 +7,7 @@
 {if $button}
     {include file="./templatesPart/buttonBackCellar.tpl"}
 {/if}
-{include file="./templatesPart/buttonAddCellar"}
+{include file= "./templatesPart/buttonAddCellar.tpl"}
 {include file="./templatesPart/footer.tpl"}
 </body>
 </html>

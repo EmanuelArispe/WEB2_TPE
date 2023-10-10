@@ -47,7 +47,7 @@ switch ($params[0]) {
         $wineControler->showDeleteWine($params[1]);
         break;
     case 'modifyWine':
-        $wineControler->showModifyWine($params[1]);
+        $wineControler->showModifyWine($params[1],$wineCellarControler->listNameCellar());
         break;
     case 'addModify':
         $wineControler->addModify($params[1]);
@@ -62,8 +62,11 @@ switch ($params[0]) {
         $wineCellarControler->addModifyCellar($params[1]);
         break;
     case 'addWine':
-        $wineControler->addWine();
+        $wineControler->showAddWine($wineCellarControler->listNameCellar());
         break;
+    case 'newAddWine':
+            $wineControler->newAddWine();
+            break;
     case 'addCellar':
         break;
     default:

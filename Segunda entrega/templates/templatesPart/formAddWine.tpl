@@ -1,14 +1,15 @@
 <h3>{$tituloLista}</h3>
-<form class="row g-3" action="addWine" method="POST">
+<form class="row g-3" action="newAddWine" method="POST">
     <div class="col-md-2">
         <label class="form-label">Nombre</label>
         <input type="text" class="form-control"  name="nombre">
     </div>
     <div class="col-md-2">
         <label class="form-label">Bodegas</label>
-        <select  class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
+        <select  class="form-select" name= "bodega">
+            {foreach from=$listCellar item=$cellar}               
+                <option value="{$cellar->nombre}">{$cellar->nombre}</option>
+            {/foreach}
         </select>
     </div>
     <div class="col-md-1">

@@ -24,6 +24,10 @@ class WineCellarControler{
        $this->view->renderModifyCellar($this->model->getCellar($cellar));
     }
 
+    public function listNameCellar(){
+        return $this->model->getListNameCellar();
+    }
+
     public function addModifyCellar($idCellar){
         $pais = $_POST['pais'];
         $provincia = $_POST['provincia'];

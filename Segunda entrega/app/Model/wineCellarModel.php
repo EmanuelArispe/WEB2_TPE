@@ -58,4 +58,13 @@ class WineCellarModel {
 
         return $query;
     }
+
+    public function getListNameCellar(){
+        $query = $this->db->prepare("SELECT nombre FROM `bodegas`");
+        $query->execute();
+        
+        $wineCellar = $query->fetchAll(PDO::FETCH_OBJ);
+
+        Return $wineCellar;
+    }
 }

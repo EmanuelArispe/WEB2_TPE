@@ -25,14 +25,49 @@ class WineControlers
         $this->view->RenderWine($this->model->getWine($wine));
     }
 
-    public function showModifyWine($wine)
+    public function showModifyWine($wine, $cellarList)
     {
-        $this->view->renderModifyWine($this->model->getWine($wine));
+        $this->view->renderModifyWine($this->model->getWine($wine), $cellarList);
+    }
+
+    public function showAddWine($cellarList){
+
+            $this->view->renderAddWine($cellarList);
+    }
+    
+    public function showDeleteWine($id){
+        $this->model->deleteWine($id);
+        $this->showHome();
+        
+    }
+
+    public function newAddWine(){
+        $nombre = $_POST['nombre'];
+        $bodega = $_POST['bodega'];
+        $anio = $_POST['anio'];
+        $cepa = $_POST['cepa'];
+        $maridaje = $_POST['maridaje'];
+        $caracteristica = $_POST['caracteristica'];
+        $stock = $_POST['stock'];
+        $precio = $_POST['precio'];
+
+        if (empty($_POST['recomendado'])) {
+            $recomendado = 0;
+        } else {
+            $recomendado = 1;
+        }
+
+        if(VerifyHelpers::verifyDates($_POST)){
+            var_dump($this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado));
+
+        }else{
+           
+            }
     }
 
     public function addModify($id){
         $nombre = $_POST['nombre'];
-        //$bodega = $_POST['bodega']; VER DE MOSTRAR LA LISTA DE BODEGAS
+        $bodega = $_POST['bodega'];
         $anio = $_POST['anio'];
         $cepa = $_POST['cepa'];
         $maridaje = $_POST['maridaje'];
@@ -49,21 +84,11 @@ class WineControlers
         }
 
         if (VerifyHelpers::verifyDates($_POST)) {
-            $this->model->upDateWine($nombre,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
+            $this->model->upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
             $this->view->renderWineList($this->model->getWineList(),$nombre);
         } else {
             $this->view->renderModifyWine($this->model->getWine($id), true);
         }
-    }
-
-    public function showDeleteWine($id){
-        $this->model->deleteWine($id);
-        $this->showHome();
-        
-    }
-
-    public function addWine(){
-        $this->view->renderAddWine();
     }
 
 }

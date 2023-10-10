@@ -26,12 +26,12 @@ class WineModel{
         return $wine;
     }
 
-    public function upDateWine($nombre,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id){
+    public function upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id){
 
-        $query = $this->db->prepare("UPDATE `vinos` SET nombre = ?, anio = ?, maridaje = ?, cepa = ?,
+        $query = $this->db->prepare("UPDATE `vinos` SET nombre = ?, bodega = ?, anio = ?, maridaje = ?, cepa = ?,
                                                         stock = ?, precio = ?, caracteristica = ?, recomendado = ? WHERE id = ?");
 
-        $query->execute([$nombre,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id]);
+        $query->execute([$nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id]);
         
         return $query;
     }
@@ -40,6 +40,13 @@ class WineModel{
         $query = $this->db->prepare("DELETE FROM `vinos` WHERE id = ?");
         $query->execute([$id]);
         
+        return $query;
+    }
+
+    public function addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado){
+        $query = $this->db->prepare("INSERT INTO `vinos`(nombre, bodega, anio, maridaje, cepa, stock, precio, caracteristica, recomendado) VALUES (?,?,?,?,?,?,?,?,?)");
+        $query->execute([$nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado]);
+
         return $query;
     }
 }
