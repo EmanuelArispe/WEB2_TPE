@@ -8,14 +8,18 @@ class WineCellarView{
         $this->smarty = new Smarty();
     }
 
-    public function renderWineCellar($wineCellar, $titulo, $button){
+    public function renderWineCellar($wineCellar, $titulo){
         $this->smarty->assign('titulo',"Blue label");
         $this->smarty->assign('tituloLista',$titulo);
-        $this->smarty->assign('button', $button);
         $this->smarty->assign('products',$wineCellar);
         $this->smarty->display('wineCellar.tpl');
     }
 
+    public function renderEspecifWineCellar($wineCellar){
+        $this->smarty->assign('titulo',"Blue label");
+        $this->smarty->assign('products',$wineCellar);
+        $this->smarty->display('listWine.tpl');
+    }
     public function renderModifyCellar($cellar){
         $this->smarty->assign('titulo',"Blue label");
         $this->smarty->assign('tituloLista',"Modificar ".$cellar->nombre);

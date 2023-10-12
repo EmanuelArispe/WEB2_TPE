@@ -1,21 +1,21 @@
 
 BODEGAS:
 
-INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Catena-Zapata','Argentina','Mendoza','');
-INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Cordon-blanco','Argentina','Buenos Aires','');
-INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Saletein','Argentina','Mendoza','');
-INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Rutini','Argentina','Mendoza','');
+INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Catena Zapata','Argentina','Mendoza','Recibio el premio a la mejor bodega del mundo');
+INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Cordon blanco','Argentina','Buenos Aires',' Radicada en Tandil');
+INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Saletein','Argentina','Mendoza','Una de las mejores bodegas del pais');
+INSERT INTO `bodegas`(`nombre`, `pais`, `provincia`, `descripcion`) VALUES ('Rutini','Argentina','Mendoza','Cuenta con una variedad de vinos catalogados como los mejores');
 
 
 VINOS: 
 
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('uno','Cordon-Blanco','2021','Carne','Malbec','12','2500','','0');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('dos','Catena-Zapata','2022','Pescado','Chardonnay','9','4000','','1');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('tres','Cordon-Blanco','2021','Pastas','Bonarda','4','6500','','1');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('cuatro','Salentein','2020','Pescado','Pinot Noir','8','3500','','0');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('cinco','Rutini','2021','Carne','Malbec','6','2000','','1');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('seis','Catena-Zapata','2021','Vegetales','Shyra','7','4500','','1');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('siete','Rutini','2020','Carne','Cabernet Franc','2','6500','','1');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('ocho','Rutini','2023','Pastas','Dulce Natural','20','2500','','0');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('nueve','Catena-Zapata','2021','Pescado','Malbec','5','5500','','0');
-INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('diez','Salentein','2020','Carne','Malbec','15','3500','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('uno','6','2021','Carne','Malbec','12','2500','','0');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('dos','5','2022','Pescado','Chardonnay','9','4000','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('tres','6','2021','Pastas','Bonarda','4','6500','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('cuatro','7','2020','Pescado','Pinot Noir','8','3500','','0');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('cinco','8','2021','Carne','Malbec','6','2000','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('seis','5','2021','Vegetales','Shyra','7','4500','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('siete','8','2020','Carne','Cabernet Franc','2','6500','','1');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('ocho','8','2023','Pastas','Dulce Natural','20','2500','','0');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('nueve','5','2021','Pescado','Malbec','5','5500','','0');
+INSERT INTO `vinos`(`nombre`, `bodega`, `anio`, `maridaje`, `cepa`, `stock`, `precio`, `caracteristica`, `recomendado`) VALUES ('diez','7','2020','Carne','Malbec','15','3500','','1');

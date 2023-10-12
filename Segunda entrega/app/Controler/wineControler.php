@@ -2,10 +2,12 @@
 require_once "./app/Model/wineModel.php";
 require_once "./app/View/wineView.php";
 require_once "./app/helpers/verifyHelpers.php";
+require_once "./app/Model/wineCellarModel.php";
 
 class WineControlers
 {
     private $model;
+    private $modelCellar;
     private $view;
 
 
@@ -13,6 +15,7 @@ class WineControlers
     {
         $this->model = new WineModel();
         $this->view = new WineView();
+        $this->modelCellar = new WineCellarModel();
     }
 
     public function showHome()
@@ -25,14 +28,14 @@ class WineControlers
         $this->view->RenderWine($this->model->getWine($wine));
     }
 
-    public function showModifyWine($wine, $cellarList)
+    public function showModifyWine($wine)
     {
-        $this->view->renderModifyWine($this->model->getWine($wine), $cellarList);
+        $this->view->renderModifyWine($this->model->getWine($wine), $this->modelCellar->getListNameCellar());
     }
 
-    public function showAddWine($cellarList){
+    public function showAddWine(){
 
-            $this->view->renderAddWine($cellarList);
+            $this->view->renderAddWine($this->modelCellar->getListNameCellar());
     }
     
     public function showDeleteWine($id){
@@ -58,7 +61,9 @@ class WineControlers
         }
 
         if(VerifyHelpers::verifyDates($_POST)){
-            var_dump($this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado));
+            // VERIFICAR QUE NO ESTE CARGADO
+            $this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado);
+            header('Location: ' . BASE_URL);
         }else{
            // HACER LA VISTA
             }
@@ -75,7 +80,7 @@ class WineControlers
         $precio = $_POST['precio'];
 
         // VER COMO SOLUCIONAR ESTE PROBLEMA DEL CHECKBOX
-
+        
         if (empty($_POST['recomendado'])) {
             $recomendado = 0;
         } else {
@@ -84,7 +89,7 @@ class WineControlers
 
         if (VerifyHelpers::verifyDates($_POST)) {
             $this->model->upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
-            $this->view->renderWineList($this->model->getWineList(),$nombre);
+            header('Location: ' . BASE_URL);
         } else {
             // HACER LA VISTA
             $this->view->renderModifyWine($this->model->getWine($id), true);

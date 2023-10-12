@@ -9,7 +9,10 @@ class WineModel{
 
 
     public function getWineList(){
-        $query = $this->db->prepare("SELECT id, nombre as Nombre, bodega as Bodega, cepa as Cepa, anio as Año FROM `vinos`");
+        $query = $this->db->prepare("SELECT id,vinos.nombre as Nombre, bodegas.nombre as Bodega, cepa as Cepa, anio as Año 
+                                    FROM `vinos`
+                                    INNER JOIN `bodegas`
+                                    ON vinos.bodega = bodegas.id_bodega");
         $query->execute();
         
         $wines = $query->fetchAll(PDO::FETCH_OBJ);
@@ -17,8 +20,13 @@ class WineModel{
         return $wines;
     }
 
+
     public function getWine($wine){
-        $query = $this->db->prepare("SELECT * FROM `vinos` WHERE id = ? ");
+        $query = $this->db->prepare("SELECT id, vinos.nombre as nombre, bodegas.nombre as bodega, maridaje, cepa, anio, stock, precio, caracteristica, recomendado 
+                                    FROM `vinos`
+                                    INNER JOIN `bodegas`
+                                    ON vinos.bodega = bodegas.id_bodega 
+                                    WHERE id = ? ");
         $query->execute([$wine]);
         
         $wine = $query->fetch(PDO::FETCH_OBJ);

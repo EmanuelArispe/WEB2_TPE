@@ -13,7 +13,7 @@ class WineCellarModel {
     }
 
     public function getWineCellar(){
-        $query = $this->db->prepare("SELECT nombre as Nombre, pais as Pais, provincia as Region FROM `bodegas`");
+        $query = $this->db->prepare("SELECT id_bodega, nombre as Nombre, pais as Pais, provincia as Region FROM `bodegas`");
         $query->execute();
         
         $wineCellar = $query->fetchAll(PDO::FETCH_OBJ);
@@ -27,8 +27,8 @@ class WineCellarModel {
                                             bodegas.pais as Pais, bodegas.provincia as Region 
                                     FROM bodegas 
                                     INNER JOIN vinos 
-                                    ON bodegas.nombre = vinos.bodega 
-                                    WHERE bodegas.nombre = ?");
+                                    ON bodegas.id_bodega = vinos.bodega 
+                                    WHERE bodegas.id_bodega = ?");
         $query->execute([$cellar]);
         
         $wineCellar = $query->fetchAll(PDO::FETCH_OBJ);
@@ -37,7 +37,7 @@ class WineCellarModel {
     }
     
     public function getCellar($cellar){
-        $query = $this->db->prepare("SELECT * FROM `bodegas` WHERE nombre = ?");
+        $query = $this->db->prepare("SELECT * FROM `bodegas` WHERE id_bodega = ?");
         $query->execute([$cellar]);
         
         $wineCellar = $query->fetch(PDO::FETCH_OBJ);
@@ -45,22 +45,22 @@ class WineCellarModel {
         Return $wineCellar;
     }
 
-    public function upDateCellar($pais,$provincia,$descripcion,$idCellar){
-        $query = $this->db->prepare("UPDATE `bodegas` SET pais = ?, provincia = ?, descripcion = ? WHERE nombre = ?");
-        $query->execute([$pais,$provincia,$descripcion,$idCellar]);
+    public function upDateCellar($nombre,$pais,$provincia,$descripcion,$idCellar){
+        $query = $this->db->prepare("UPDATE `bodegas` SET nombre = ?, pais = ?, provincia = ?, descripcion = ? WHERE id_bodega = ?");
+        $query->execute([$nombre,$pais,$provincia,$descripcion,$idCellar]);
 
         return $this->db->lastInsertId();
     }
 
     public function deleteCellar($cellar){
-        $query = $this->db->prepare("DELETE FROM `bodegas` WHERE nombre = ?");
+        $query = $this->db->prepare("DELETE FROM `bodegas` WHERE id_bodega = ?");
         $query->execute([$cellar]);
 
         return $query;
     }
 
     public function getListNameCellar(){
-        $query = $this->db->prepare("SELECT nombre FROM `bodegas`");
+        $query = $this->db->prepare("SELECT id_bodega, nombre FROM `bodegas`");
         $query->execute();
         
         $wineCellar = $query->fetchAll(PDO::FETCH_OBJ);

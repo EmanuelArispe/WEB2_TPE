@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 {foreach from=$products[0] item=item key=key}
-                    {if ($key != "id")}
+                    {if ($key != "id") && ($key != "id_bodega")}
                         <th>{$key}</th>
                     {/if}
                 {/foreach}
@@ -15,12 +15,10 @@
             {foreach from=$products item= prod}
                 <tr>
                     {foreach from=$prod item=item key=key}
-                        {if ($key != "id")}
-                            {if ($key != "Nombre")}
+                        {if ($key != "id") && ($key != "id_bodega")}
                                 <td>{$prod->$key}</td>
                             {{else}}
-                                <td><a href="{BASE_URL}search/{$prod->$key}">{$prod->$key}</a></td>
-                            {/if}
+                                <td><a href="{BASE_URL}search/{$prod->$key}">{$prod->Nombre}</a></td>
                         {/if}
                     {/foreach}
                     {if (isset($prod->id))}
@@ -30,8 +28,8 @@
                         </td>
                     {else}
                         <td>
-                            <a type="button" class="btn btn-success" href="{BASE_URL}modifyCellar/{$prod->Nombre}">Modificar</a>
-                            <a type="button" class="btn btn-danger" href="{BASE_URL}deleteCellar/{$prod->Nombre}">Eliminar</a>
+                            <a type="button" class="btn btn-success" href="{BASE_URL}modifyCellar/{$prod->id_bodega}">Modificar</a>
+                            <a type="button" class="btn btn-danger" href="{BASE_URL}deleteCellar/{$prod->id_bodega}">Eliminar</a>
                         </td>
 
                     {/if}

@@ -16,12 +16,12 @@ class WineCellarControler
 
     public function showWineCellar()
     {
-        $this->view->renderWineCellar($this->model->getWineCellar(), "Bodegas de vinos", $button = false);
+        $this->view->renderWineCellar($this->model->getWineCellar(), "Bodegas de vinos");
     }
 
     public function showEspecificCellar($cellar)
     {
-        $this->view->renderWineCellar($this->model->getEspecificCellar($cellar), "Bodega: " . $cellar, $button = true);
+        $this->view->renderEspecifWineCellar($this->model->getEspecificCellar($cellar));
     }
 
     public function showModifyCellar($cellar)
@@ -41,12 +41,13 @@ class WineCellarControler
 
     public function addModifyCellar($idCellar)
     {
+        $nombre = $_POST['nombre'];
         $pais = $_POST['pais'];
         $provincia = $_POST['provincia'];
         $descripcion = $_POST['descripcion'];
         if (VerifyHelpers::verifyDates($_POST)) {
-            $this->model->upDateCellar($pais, $provincia, $descripcion, $idCellar);
-            $this->showWineCellar();
+            $this->model->upDateCellar($nombre,$pais, $provincia, $descripcion, $idCellar);
+            header('Location: ' . BASE_URL .'cellar');
         } else {
             $this->showWineCellar();
         }
@@ -56,7 +57,7 @@ class WineCellarControler
     {
         if (empty($this->model->getEspecificCellar($cellar))) {
             $this->model->deleteCellar($cellar);
-            $this->showWineCellar();
+            header('Location: ' . BASE_URL .'cellar');
         } else {
             // Mostrar error de que faltan datos
             $this->showWineCellar();
@@ -72,8 +73,9 @@ class WineCellarControler
         $descripcion = $_POST['descripcion'];
 
         if (VerifyHelpers::verifyDates($_POST)) {
+            // VERIFICAR QUE NO ESTE CARGADA
             $this->model->addCellar($nombre,$pais,$provincia,$descripcion);
-            $this->showWineCellar();
+            header('Location: ' . BASE_URL .'cellar');
         } else {
             // Mostrar error de que faltan datos
             $this->showAddCellar();

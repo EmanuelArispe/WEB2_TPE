@@ -1,4 +1,6 @@
-<h3>{$tituloLista}</h3>
+{if !empty($tituloLista)}
+    <h3>{$tituloLista}</h3>
+{/if}
 <table class="table table-hover">
     <thead>
         <tr>

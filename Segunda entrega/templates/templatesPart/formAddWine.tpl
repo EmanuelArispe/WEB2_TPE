@@ -8,7 +8,7 @@
         <label class="form-label">Bodegas</label>
         <select  class="form-select" name= "bodega">
             {foreach from=$listCellar item=$cellar}               
-                <option value="{$cellar->nombre}">{$cellar->nombre}</option>
+                <option value="{$cellar->id_bodega}">{$cellar->nombre}</option>
             {/foreach}
         </select>
     </div>

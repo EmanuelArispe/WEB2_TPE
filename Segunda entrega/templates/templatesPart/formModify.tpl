@@ -7,10 +7,11 @@
     <div class="col-md-2">
         <label class="form-label">Bodegas</label>
         <select class="form-select" name= "bodega">
-        <option selected>{$product->bodega}</option>
         {foreach from=$listCellar item=$cellar}
-            {if $cellar->nombre != $product->bodega}
-                <option value="{$cellar->nombre}">{$cellar->nombre}</option>
+            {if $cellar->nombre == $product->bodega}
+                <option value="{$cellar->id_bodega}" selected>{$product->bodega}</option>
+            {else}    
+                <option value="{$cellar->id_bodega}">{$cellar->nombre}</option>
             {/if}               
         {/foreach}
         </select>
@@ -38,7 +39,7 @@
     </div>
     <div class="col-md-8">
         <label class="form-label">Caracteristicas</label>
-        <textarea type="text" class="form-control"  name="caracteristica" value="{$product->caracteristica}"></textarea>
+        <textarea type="text" class="form-control"  name="caracteristica" name="caracteristica">{$product->caracteristica}</textarea>
     </div>
     <div class="col-4">
         <div class="form-check">
