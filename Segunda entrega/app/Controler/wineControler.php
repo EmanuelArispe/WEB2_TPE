@@ -29,7 +29,7 @@ class WineControlers
     }
 
     public function showModifyWine($wine){
-        AuthHelper::verify();
+        AuthHelper::verify();      
         $this->view->renderModifyWine($this->model->getWine($wine), $this->modelCellar->getListNameCellar(),AuthHelper::getUserAdmin());
     }
 
@@ -67,7 +67,8 @@ class WineControlers
             $this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado);
             header('Location: ' . BASE_URL);
         }else{
-            $this->view->renderAddWine($this->modelCellar->getListNameCellar(), true);
+            $mensaje = "Por favor complete todos los campos";
+            $this->view->renderAddWine($this->modelCellar->getListNameCellar(), AuthHelper::getUserAdmin(), $mensaje);
             }
     }
 
@@ -92,7 +93,8 @@ class WineControlers
             $this->model->upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
             header('Location: ' . BASE_URL);
         } else {
-            $this->view->renderModifyWine($this->model->getWine($id), $this->modelCellar->getListNameCellar(), AuthHelper::getUserAdmin(), true);
+            $mensaje = "Por favor complete todos los campos";
+            $this->view->renderModifyWine($this->model->getWine($id), $this->modelCellar->getListNameCellar(), AuthHelper::getUserAdmin(), $mensaje);
         }
     }
 

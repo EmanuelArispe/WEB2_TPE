@@ -23,18 +23,26 @@ class WineCellarView{
         $this->smarty->assign('userAdmin',$userAdmin);
         $this->smarty->display('./templatesCellar/listWine.tpl');
     }
-    public function renderModifyCellar($cellar,$userAdmin){
+    public function renderModifyCellar($cellar,$userAdmin, $mensaje = null){
         $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista',"Modificar ".$cellar->nombre);
         $this->smarty->assign('cellar',$cellar);
         $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->assign('mensaje',$mensaje);
         $this->smarty->display('./templatesCellar/wineCellarModify.tpl');
     }
 
-    public function renderAddCellar($userAdmin) {
+    public function renderAddCellar($userAdmin, $mensaje = null) {
         $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista', 'Agregar nueva Bodega: ');
         $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->assign('mensaje',$mensaje);
         $this->smarty->display('./templatesCellar/addCellar.tpl');
+    }
+
+    public  function errorDelete($userAdmin){
+        $this->smarty->assign('tituloLista',"Heart Wine");
+        $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->display('templates/templatesError/errorDelete.tpl');
     }
 }

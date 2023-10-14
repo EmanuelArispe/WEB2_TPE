@@ -107,3 +107,21 @@
     align-items: center;
     justify-content: space-around;
 }
+
+.formLogin{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.item-form{
+    display:flex;
+    flex-direction: column;
+}
+
+.warning{
+    color: red;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px;
+}

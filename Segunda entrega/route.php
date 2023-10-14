@@ -7,25 +7,24 @@ require_once "./config.php";
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
-// lee la acción
+
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'home'; // acción por defecto si no envían
+    $action = 'home'; 
 }
 
 
 $params = explode('/', $action);
 
 
-// inicializo el controlador
 
 $wineControler = new WineControlers();
 $wineCellarControler = new WineCellarControler();
 $authControler = new AuthControler();
 $msgControler = new MsgControler();
 
-// determina que camino seguir según la acción
+
 switch ($params[0]) {
     case 'home':
         $wineControler->showHome();
@@ -67,8 +66,8 @@ switch ($params[0]) {
         $wineControler->showAddWine();
         break;
     case 'newAddWine':
-            $wineControler->newAddWine();
-            break;
+        $wineControler->newAddWine();
+        break;
     case 'addCellar':
         $wineCellarControler->showAddCellar();
         break;
@@ -79,6 +78,6 @@ switch ($params[0]) {
         $authControler->showLogout();
         break;
     default:
-       $msgControler->error();
+        $msgControler->error();
         break;
 }

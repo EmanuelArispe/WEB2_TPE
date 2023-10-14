@@ -1,3 +1,3 @@
 <div>
-    <h3>Por favor complete todos los campos</h3>
+    <h3 class="warning centrado">{$mensaje}</h3>
 </div>

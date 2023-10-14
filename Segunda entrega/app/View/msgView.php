@@ -15,4 +15,6 @@ class MsgView {
         $this->smarty->display('error.tpl');
 
     }
+
+
 }

@@ -53,7 +53,9 @@ class WineCellarControler
             $this->model->upDateCellar($nombre,$pais, $provincia, $descripcion, $idCellar);
             header('Location: ' . BASE_URL .'cellar');
         } else {
-            header('Location: ' . BASE_URL .'cellar');
+            $mensaje = "Por favor complete todos los campos";
+            $this->view->renderModifyCellar($this->model->getCellar($idCellar), AuthHelper::getUserAdmin(),$mensaje);
+
         }
     }
 
@@ -64,8 +66,7 @@ class WineCellarControler
             $this->model->deleteCellar($cellar);
             header('Location: ' . BASE_URL .'cellar');
         } else {
-            // Mostrar error de que faltan datos
-            $this->showWineCellar();
+            $this->view->errorDelete(AuthHelper::getUserAdmin());
         }
     }
 
@@ -81,8 +82,9 @@ class WineCellarControler
             $this->model->addCellar($nombre,$pais,$provincia,$descripcion);
             header('Location: ' . BASE_URL .'cellar');
         } else {
-            // Mostrar error de que faltan datos
-            header('Location: ' . BASE_URL .'cellar');
+            $mensaje = "Por favor complete todos los campos";
+            $this->view->renderAddCellar(AuthHelper::getUserAdmin(),$mensaje);
+
         }
     }
 }
