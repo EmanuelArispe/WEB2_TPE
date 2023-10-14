@@ -1,11 +1,8 @@
 <!-- main header -->
 <header>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light " >
         <div class="container-fluid">
-            <a class="navbar-brand" href="home">VINOTECA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="home"><img src="templates\css\img\logo.png" alt="Logo" class="logo" ></a>
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -14,17 +11,20 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="cellar">Bodegas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="logout">Logout</a>
-                </li>
-            </ul>
-            </div>
+                {if $userAdmin}
+                    <li class="nav-item element">
+                        <a id="loginActive" class="nav-link " aria-current="page" href="login">Usuario: {$userAdmin}</a>
+                    </li>
+                    <li class="nav-item element">
+                        <a id="logout" class="nav-link" aria-current="page" href="logout">Logout</a>
+                    </li>
+                    {else}
+                        <li class="nav-item element">
+                        <a id="login" class="nav-link" aria-current="page" href="login">Login</a>
+                    </li>
+                    {/if}
+                        </ul>
+                        </div>
         </div>
         </nav>
 </header>

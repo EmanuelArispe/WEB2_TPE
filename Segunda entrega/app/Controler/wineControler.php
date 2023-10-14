@@ -20,31 +20,33 @@ class WineControlers
 
     public function showHome()
     {
-        $this->view->renderWineList($this->model->getWineList());
+        $this->view->renderWineList($this->model->getWineList(), AuthHelper::getUserAdmin());
     }
 
     public function showWine($wine)
     {
-        $this->view->RenderWine($this->model->getWine($wine));
+        $this->view->RenderWine($this->model->getWine($wine), AuthHelper::getUserAdmin());
     }
 
-    public function showModifyWine($wine)
-    {
-        $this->view->renderModifyWine($this->model->getWine($wine), $this->modelCellar->getListNameCellar());
+    public function showModifyWine($wine){
+        AuthHelper::verify();
+        $this->view->renderModifyWine($this->model->getWine($wine), $this->modelCellar->getListNameCellar(),AuthHelper::getUserAdmin());
     }
 
     public function showAddWine(){
-
-            $this->view->renderAddWine($this->modelCellar->getListNameCellar());
+            AuthHelper::verify();
+            $this->view->renderAddWine($this->modelCellar->getListNameCellar(),AuthHelper::getUserAdmin());
     }
     
     public function showDeleteWine($id){
+        AuthHelper::verify();
         $this->model->deleteWine($id);
         $this->showHome();
         
     }
 
     public function newAddWine(){
+        AuthHelper::verify();
         $nombre = $_POST['nombre'];
         $bodega = $_POST['bodega'];
         $anio = $_POST['anio'];
@@ -60,16 +62,17 @@ class WineControlers
             $recomendado = 1;
         }
 
-        if(VerifyHelpers::verifyDates($_POST)){
-            // VERIFICAR QUE NO ESTE CARGADO
+        if(VerifyHelpers::verifyData($_POST)){
+
             $this->model->addWine($nombre, $bodega, $anio, $maridaje, $cepa, $stock, $precio, $caracteristica, $recomendado);
             header('Location: ' . BASE_URL);
         }else{
-           // HACER LA VISTA
+            $this->view->renderAddWine($this->modelCellar->getListNameCellar(), true);
             }
     }
 
     public function addModify($id){
+        AuthHelper::verify();
         $nombre = $_POST['nombre'];
         $bodega = $_POST['bodega'];
         $anio = $_POST['anio'];
@@ -78,8 +81,6 @@ class WineControlers
         $caracteristica = $_POST['caracteristica'];
         $stock = $_POST['stock'];
         $precio = $_POST['precio'];
-
-        // VER COMO SOLUCIONAR ESTE PROBLEMA DEL CHECKBOX
         
         if (empty($_POST['recomendado'])) {
             $recomendado = 0;
@@ -87,12 +88,11 @@ class WineControlers
             $recomendado = 1;
         }
 
-        if (VerifyHelpers::verifyDates($_POST)) {
+        if (VerifyHelpers::verifyData($_POST)) {
             $this->model->upDateWine($nombre,$bodega,$anio,$maridaje,$cepa,$stock,$precio,$caracteristica,$recomendado,$id);
             header('Location: ' . BASE_URL);
         } else {
-            // HACER LA VISTA
-            $this->view->renderModifyWine($this->model->getWine($id), true);
+            $this->view->renderModifyWine($this->model->getWine($id), $this->modelCellar->getListNameCellar(), AuthHelper::getUserAdmin(), true);
         }
     }
 

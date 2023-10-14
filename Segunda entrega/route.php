@@ -1,8 +1,9 @@
 <?php
 require_once "./app/Controler/wineControler.php";
-require_once "./app/Controler/aboutControler.php";
 require_once "./app/Controler/wineCellarControler.php";
 require_once "./app/Controler/authControler.php";
+require_once "./app/Controler/msgControler.php";
+require_once "./config.php";
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -20,17 +21,14 @@ $params = explode('/', $action);
 // inicializo el controlador
 
 $wineControler = new WineControlers();
-$aboutControler = new AboutControler();
 $wineCellarControler = new WineCellarControler();
 $authControler = new AuthControler();
+$msgControler = new MsgControler();
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
         $wineControler->showHome();
-        break;
-    case 'about':
-        $aboutControler->showAbout();
         break;
     case 'cellar':
         $wineCellarControler->showWineCellar();
@@ -81,6 +79,6 @@ switch ($params[0]) {
         $authControler->showLogout();
         break;
     default:
-        echo ('404 Page not found');
+       $msgControler->error();
         break;
 }

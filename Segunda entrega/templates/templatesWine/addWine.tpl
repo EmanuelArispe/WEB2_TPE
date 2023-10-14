@@ -3,7 +3,7 @@
 {include file="templates/templatesPart/head.tpl"}
 <body>
 {include file="templates/templatesPart/header.tpl"}
-{include file="templates/templatesPart/formLogin.tpl"}
+{include file="templates/templatesPart/formAddWine.tpl"}
 {include file="templates/templatesPart/footer.tpl"}
 </body>
 </html>

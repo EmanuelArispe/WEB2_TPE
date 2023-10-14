@@ -1,12 +1,6 @@
 <?php
+class WineCellarModel extends Model{
 
-class WineCellarModel {
-    
-    private $db;
-
-    public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=vinoteca;charset=utf8', 'root', '');
-    }
 
     public function getDB(){
         return $this->db;
@@ -23,8 +17,8 @@ class WineCellarModel {
 
     public function getEspecificCellar($cellar){
 
-        $query = $this->db->prepare("SELECT id, vinos.nombre as Vino, vinos.anio as Año, vinos.maridaje as Maridaje, vinos.cepa as Cepa,
-                                            bodegas.pais as Pais, bodegas.provincia as Region 
+        $query = $this->db->prepare("SELECT id, vinos.nombre as Vino, vinos.anio as año, vinos.maridaje, vinos.cepa,
+                                            bodegas.pais, bodegas.provincia as Region 
                                     FROM bodegas 
                                     INNER JOIN vinos 
                                     ON bodegas.id_bodega = vinos.bodega 

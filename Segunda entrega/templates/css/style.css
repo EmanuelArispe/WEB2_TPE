@@ -1,0 +1,109 @@
+.centrado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    width: 40px;
+}
+
+.logo-git{
+    width: 100px;
+}
+
+#login{
+    color: green;
+    font-weight: bold;
+}
+
+#logout {
+    color: red;
+    font-weight: bold;
+}
+
+#loginActive{
+    color: #444444;
+    font-weight: 600;
+}
+
+.footer-color{
+    background-color: #dddddd;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: 700;
+    font-size: 35px;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px;   
+}
+
+.encabezado-table{
+    font-weight: 700;
+    color:#444444;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+
+.fila-tabla{
+    text-align: center;
+    color: #777777;
+    font-size: 16px;
+}
+
+.botton-add{
+    margin: 10px;
+}
+
+.col-nombre{
+    text-decoration: none;
+    font-weight: 600;
+    color: #666666;
+    text-shadow: 1px 2px 5px;
+}
+
+.col-nombre:hover{
+    font-weight: 615;
+    color:#444444;
+}
+
+.wine-details {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.wine-info-sup{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cellar-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.wine-info {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.wine-description {
+    margin-top: 10px;
+}
+
+.error-404{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

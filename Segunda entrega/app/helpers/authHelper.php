@@ -10,7 +10,7 @@ class AuthHelper {
 
     public static function login($user) {
         AuthHelper::init();
-        $_SESSION['USER_ID'] = $user->id;
+        $_SESSION['USER_ID'] = $user->id_usuario;
         $_SESSION['USER_EMAIL'] = $user->email; 
     }
 
@@ -22,9 +22,14 @@ class AuthHelper {
     public static function verify() {
         AuthHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
-            header('Location: ' . BASE_URL . '/login');
+            header('Location: ' . BASE_URL . 'login');
             die();
         }
     }
 
+
+    public static function getUserAdmin(){
+        AuthHelper::init();
+        return isset($_SESSION['USER_EMAIL']) ? $_SESSION['USER_EMAIL'] : false;
+    }
 }

@@ -14,12 +14,12 @@ class AuthControler
     }
 
     public function showLogin(){
-        $this->view->renderLogin($error = null);
+        $this->view->renderLogin(AuthHelper::getUserAdmin());
     }
 
     public function showLogout(){
         AuthHelper::logout();
-        $this->view->renderLogin($error = null);
+        header('Location: ' . BASE_URL);
     }
 
     public function showAuth()
@@ -27,8 +27,8 @@ class AuthControler
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if (!VerifyHelpers::verifyDates($_POST)) {
-            $this->view->renderLogin("Ingrese los datos correctos");
+        if (!VerifyHelpers::verifyData($_POST)) {
+            $this->view->renderLogin(AuthHelper::getUserAdmin(),"Ingrese los datos correctos");
             return;
         }
 
@@ -37,7 +37,7 @@ class AuthControler
             AuthHelper::login($user);
             header('Location: ' . BASE_URL);
         } else {
-            $this->view->renderLogin("Usuario invalido, ingrese nuevamente sus datos");
+            $this->view->renderLogin(AuthHelper::getUserAdmin(),"Usuario invalido, ingrese nuevamente sus datos");
         }
     }
 

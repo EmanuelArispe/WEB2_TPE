@@ -8,28 +8,33 @@ class WineCellarView{
         $this->smarty = new Smarty();
     }
 
-    public function renderWineCellar($wineCellar, $titulo){
-        $this->smarty->assign('titulo',"Blue label");
+    public function renderWineCellar($wineCellar, $titulo,$userAdmin){
+        $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista',$titulo);
         $this->smarty->assign('products',$wineCellar);
-        $this->smarty->display('wineCellar.tpl');
+        $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->display('./templatesCellar/wineCellar.tpl');
     }
 
-    public function renderEspecifWineCellar($wineCellar){
-        $this->smarty->assign('titulo',"Blue label");
+    public function renderEspecifWineCellar($wineCellar,$cellar, $userAdmin){
+        $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('products',$wineCellar);
-        $this->smarty->display('listWine.tpl');
+        $this->smarty->assign('cellar',$cellar);
+        $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->display('./templatesCellar/listWine.tpl');
     }
-    public function renderModifyCellar($cellar){
-        $this->smarty->assign('titulo',"Blue label");
+    public function renderModifyCellar($cellar,$userAdmin){
+        $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista',"Modificar ".$cellar->nombre);
         $this->smarty->assign('cellar',$cellar);
-        $this->smarty->display('wineCellarModify.tpl');
+        $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->display('./templatesCellar/wineCellarModify.tpl');
     }
 
-    public function renderAddWine() {
-        $this->smarty->assign('titulo',"Blue label");
+    public function renderAddCellar($userAdmin) {
+        $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista', 'Agregar nueva Bodega: ');
-        $this->smarty->display('addCellar.tpl');
+        $this->smarty->assign('userAdmin',$userAdmin);
+        $this->smarty->display('./templatesCellar/addCellar.tpl');
     }
 }

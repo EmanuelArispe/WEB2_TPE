@@ -1,15 +1,10 @@
 <?php
-class WineModel{
-
-    private $db;
-
-    public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=vinoteca;charset=utf8', 'root', '');
-    }
+require_once "./app/Model/model.php";
+class WineModel extends Model{
 
 
     public function getWineList(){
-        $query = $this->db->prepare("SELECT id,vinos.nombre as Nombre, bodegas.nombre as Bodega, cepa as Cepa, anio as Año 
+        $query = $this->db->prepare("SELECT id, vinos.nombre, bodegas.nombre as Bodega, cepa, anio as año, precio, stock 
                                     FROM `vinos`
                                     INNER JOIN `bodegas`
                                     ON vinos.bodega = bodegas.id_bodega");
@@ -22,7 +17,7 @@ class WineModel{
 
 
     public function getWine($wine){
-        $query = $this->db->prepare("SELECT id, vinos.nombre as nombre, bodegas.nombre as bodega, maridaje, cepa, anio, stock, precio, caracteristica, recomendado 
+        $query = $this->db->prepare("SELECT id, vinos.nombre as nombre, bodegas.nombre as bodega, pais, provincia as region, maridaje, cepa, anio, stock, precio, caracteristica, recomendado 
                                     FROM `vinos`
                                     INNER JOIN `bodegas`
                                     ON vinos.bodega = bodegas.id_bodega 

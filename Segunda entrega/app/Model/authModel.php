@@ -1,10 +1,6 @@
 <?php
-class AuthModel {
-    private $db;
-
-    public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=vinoteca;charset=utf8', 'root', '');
-    }
+require_once "./app/Model/model.php";
+class AuthModel extends Model{
 
     public function getUser($email){
         $query = $this->db->prepare("SELECT * FROM `usuarios` WHERE email = ?");
