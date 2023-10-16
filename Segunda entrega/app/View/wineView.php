@@ -38,7 +38,7 @@ class  WineView{
     public function renderAddWine($cellarList, $userAdmin , $mensaje = null){
         $this->smarty->assign('titulo',"Heart Wine");
         $this->smarty->assign('tituloLista','Agregar nuevo vino: ');
-        $this->smarty->assign('error',$mensaje);
+        $this->smarty->assign('mensaje',$mensaje);
         $this->smarty->assign('listCellar', $cellarList);
         $this->smarty->assign('userAdmin', $userAdmin);
         $this->smarty->display('./templatesWine/addwine.tpl');

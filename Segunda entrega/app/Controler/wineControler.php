@@ -19,8 +19,9 @@ class WineControlers
     }
 
     public function showHome()
-    {
-        $this->view->renderWineList($this->model->getWineList(), AuthHelper::getUserAdmin());
+    {   
+        var_dump($this->model->getWineList());
+            $this->view->renderWineList($this->model->getWineList(), AuthHelper::getUserAdmin());
     }
 
     public function showWine($wine)

@@ -9,12 +9,17 @@
         {include file="./templatesPart/upDataMensage.tpl"}
     {/if}
 
-    {include file="./templatesPart/tableWine.tpl"}
+    {if !empty($products)}
+        {include file="./templatesPart/tableWine.tpl"}
+
+    {else}
+        {include file="templates/templatesError/errorSinElement.tpl"}
+    {/if}
 
     {if $userAdmin}
         {include file= "./templatesPart/buttonAddWine.tpl"}
     {/if}
-    
+
     {include file="./templatesPart/footer.tpl"}
 </body>
 
